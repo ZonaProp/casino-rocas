@@ -22,12 +22,28 @@ export default function HomePage() {
 
   const games = [
     {
+      id: "crash",
+      name: "Crash",
+      description: "El multiplicador sube... ¡cobrá antes de que se estrelle!",
+      emoji: "🚀",
+      href: "/crash",
+      color: "from-orange-500/30 to-red-600/20 border-orange-500/50",
+    },
+    {
+      id: "mines",
+      name: "Mines",
+      description: "Evitá las minas y multiplicá tu apuesta",
+      emoji: "💣",
+      href: "/mines",
+      color: "from-yellow-500/30 to-amber-600/20 border-yellow-500/50",
+    },
+    {
       id: "slots",
       name: "Tragamonedas",
       description: "Girá los rodillos y ganá combinaciones",
       emoji: "🎰",
       href: "/slots",
-      color: "from-purple-600/20 to-pink-600/20 border-purple-500/40",
+      color: "from-purple-600/30 to-pink-600/20 border-purple-500/50",
     },
     {
       id: "ruleta",
@@ -35,7 +51,7 @@ export default function HomePage() {
       description: "Apostá al número, color o docena",
       emoji: "🎡",
       href: "/ruleta",
-      color: "from-red-600/20 to-rose-600/20 border-red-500/40",
+      color: "from-red-600/30 to-rose-600/20 border-red-500/50",
     },
     {
       id: "blackjack",
@@ -43,9 +59,18 @@ export default function HomePage() {
       description: "Llegá a 21 sin pasarte",
       emoji: "🃏",
       href: "/blackjack",
-      color: "from-emerald-600/20 to-teal-600/20 border-emerald-500/40",
+      color: "from-emerald-600/30 to-teal-600/20 border-emerald-500/50",
     },
   ];
+
+  const gameName = (g: string) => {
+    if (g === "slots") return "Tragamonedas";
+    if (g === "ruleta") return "Ruleta";
+    if (g === "blackjack") return "Blackjack";
+    if (g === "crash") return "Crash";
+    if (g === "mines") return "Mines";
+    return g;
+  };
 
   return (
     <div className="min-h-screen">
@@ -59,19 +84,19 @@ export default function HomePage() {
           <p className="mt-2 text-zinc-400">Elegí un juego y probá tu suerte</p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {games.map((game) => (
             <Link
               key={game.id}
               href={game.href}
-              className={`group relative overflow-hidden rounded-2xl border bg-gradient-to-br ${game.color} p-6 transition-all hover:scale-[1.02] hover:shadow-xl`}
+              className={`group relative overflow-hidden rounded-2xl border bg-gradient-to-br ${game.color} p-5 transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-black/40`}
             >
-              <div className="text-5xl mb-4">{game.emoji}</div>
-              <h3 className="text-xl font-bold text-white group-hover:text-[#f5c542] transition">
+              <div className="text-4xl mb-3">{game.emoji}</div>
+              <h3 className="text-lg font-bold text-white group-hover:text-[#f5c542] transition">
                 {game.name}
               </h3>
-              <p className="mt-1 text-sm text-zinc-400">{game.description}</p>
-              <div className="mt-4 text-sm font-medium text-[#f5c542] opacity-0 group-hover:opacity-100 transition">
+              <p className="mt-1 text-sm text-zinc-400 leading-snug">{game.description}</p>
+              <div className="mt-3 text-sm font-semibold text-[#f5c542] opacity-70 group-hover:opacity-100 transition">
                 Jugar →
               </div>
             </Link>
@@ -104,14 +129,12 @@ export default function HomePage() {
                   <tbody>
                     {history.slice(0, 20).map((h) => (
                       <tr key={h.id} className="border-t border-[#2a2a3a]">
-                        <td className="px-4 py-3 capitalize">
-                          {h.game === "slots" ? "Tragamonedas" : h.game === "ruleta" ? "Ruleta" : "Blackjack"}
-                        </td>
+                        <td className="px-4 py-3">{gameName(h.game)}</td>
                         <td className="px-4 py-3">${h.bet.toLocaleString("es-AR")}</td>
                         <td className={`px-4 py-3 font-medium ${h.result >= 0 ? "text-emerald-400" : "text-red-400"}`}>
                           {h.result >= 0 ? "+" : ""}${h.result.toLocaleString("es-AR")}
                         </td>
-                        <td className="px-4 py-3 text-zinc-400 hidden sm:table-cell max-w-[200px] truncate">
+                        <td className="px-4 py-3 text-zinc-400 hidden sm:table-cell max-w-[180px] truncate">
                           {h.details}
                         </td>
                         <td className="px-4 py-3 text-zinc-500">
