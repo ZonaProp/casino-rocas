@@ -27,7 +27,7 @@ export default function HomePage() {
       emoji: "🚀",
       href: "/crash",
       badge: "HOT",
-      gradient: "from-orange-600 via-red-600 to-rose-700",
+      gradient: "from-orange-500 via-red-600 to-rose-800",
     },
     {
       id: "mines",
@@ -35,48 +35,50 @@ export default function HomePage() {
       emoji: "💣",
       href: "/mines",
       badge: "TOP",
-      gradient: "from-amber-500 via-yellow-600 to-orange-700",
+      gradient: "from-amber-400 via-yellow-600 to-orange-800",
+    },
+    {
+      id: "plinko",
+      name: "Plinko",
+      emoji: "🎱",
+      href: "/plinko",
+      badge: "NEW",
+      gradient: "from-cyan-500 via-blue-600 to-indigo-800",
     },
     {
       id: "slots",
-      name: "Tragamonedas",
+      name: "Slots",
       emoji: "🎰",
       href: "/slots",
-      gradient: "from-purple-600 via-fuchsia-600 to-pink-700",
-    },
-    {
-      id: "ruleta",
-      name: "Ruleta",
-      emoji: "🎡",
-      href: "/ruleta",
-      gradient: "from-red-600 via-rose-600 to-red-800",
+      gradient: "from-purple-500 via-fuchsia-600 to-pink-800",
     },
   ];
 
   const tableGames = [
     {
+      id: "ruleta",
+      name: "Ruleta",
+      emoji: "🎡",
+      href: "/ruleta",
+      gradient: "from-red-600 via-rose-700 to-red-950",
+    },
+    {
       id: "blackjack",
       name: "Blackjack",
       emoji: "🃏",
       href: "/blackjack",
-      gradient: "from-emerald-700 via-teal-700 to-green-900",
-    },
-    {
-      id: "ruleta2",
-      name: "Ruleta Europea",
-      emoji: "🔴",
-      href: "/ruleta",
-      gradient: "from-red-700 via-red-800 to-black",
+      gradient: "from-emerald-600 via-teal-700 to-green-950",
     },
   ];
 
   const gameName = (g: string) => {
     const map: Record<string, string> = {
-      slots: "Tragamonedas",
+      slots: "Slots",
       ruleta: "Ruleta",
       blackjack: "Blackjack",
       crash: "Crash",
       mines: "Mines",
+      plinko: "Plinko",
     };
     return map[g] || g;
   };
@@ -87,42 +89,43 @@ export default function HomePage() {
 
       <main className="mx-auto max-w-6xl px-3 py-4">
         {/* Banner */}
-        <div className="mb-6 overflow-hidden rounded-2xl border border-[#e8c547]/20 bg-gradient-to-r from-[#1a150f] via-[#2a1f12] to-[#1a150f]">
-          <div className="relative px-5 py-8 text-center">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(232,197,71,0.15),transparent_70%)]" />
-            <h2 className="relative text-2xl font-bold text-[#e8c547] text-glow">
-              ♛ Casino Rocas
+        <div className="mb-5 overflow-hidden rounded-2xl border border-[#e8c547]/30 bg-gradient-to-br from-[#1a1408] via-[#2a1c0a] to-[#0c0a08]">
+          <div className="relative px-4 py-7 text-center">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(232,197,71,0.2),transparent_60%)]" />
+            <div className="relative text-3xl mb-1">♛</div>
+            <h2 className="relative text-xl font-bold text-[#e8c547] text-glow">
+              Casino Rocas
             </h2>
-            <p className="relative mt-1 text-sm text-zinc-400">
-              Hola, <span className="text-[#e8c547]">{user.username}</span> · Solo entretenimiento
+            <p className="relative mt-1 text-xs text-zinc-400">
+              Hola <span className="text-[#e8c547] font-medium">{user.username}</span> · Solo entretenimiento
             </p>
           </div>
         </div>
 
-        {/* Top / Populares */}
-        <section className="mb-6">
-          <div className="mb-3 flex items-center justify-between">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-[#e8c547]">
-              <span className="h-2 w-2 rounded-full bg-[#e8c547]" />
-              Top / Populares
+        {/* Top */}
+        <section className="mb-5">
+          <div className="mb-3 flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#e8c547]" />
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#e8c547]">
+              Populares
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
             {topGames.map((game) => (
               <Link
                 key={game.id}
                 href={game.href}
-                className="game-card group relative overflow-hidden rounded-xl border border-[#2a241c]"
+                className="game-card relative overflow-hidden rounded-xl border border-white/5"
               >
-                <div className={`aspect-square bg-gradient-to-br ${game.gradient} flex flex-col items-center justify-center p-3`}>
+                <div className={`aspect-[4/5] bg-gradient-to-br ${game.gradient} flex flex-col items-center justify-center p-3 relative`}>
                   {game.badge && (
-                    <span className="absolute top-2 right-2 rounded bg-red-600 px-1.5 py-0.5 text-[10px] font-bold text-white">
+                    <span className="absolute top-1.5 right-1.5 rounded-md bg-black/50 px-1.5 py-0.5 text-[9px] font-bold text-white backdrop-blur-sm">
                       {game.badge}
                     </span>
                   )}
-                  <span className="text-4xl drop-shadow-lg">{game.emoji}</span>
-                  <span className="mt-2 text-sm font-bold text-white drop-shadow-md text-center leading-tight">
+                  <span className="text-4xl drop-shadow-xl">{game.emoji}</span>
+                  <span className="mt-2 text-sm font-bold text-white drop-shadow-md">
                     {game.name}
                   </span>
                 </div>
@@ -131,25 +134,25 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Juegos de mesa */}
-        <section className="mb-6">
-          <div className="mb-3 flex items-center justify-between">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-[#e8c547]">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              Juegos de mesa
+        {/* Mesa */}
+        <section className="mb-5">
+          <div className="mb-3 flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+              Mesa
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
             {tableGames.map((game) => (
               <Link
                 key={game.id}
                 href={game.href}
-                className="game-card group relative overflow-hidden rounded-xl border border-[#2a241c]"
+                className="game-card relative overflow-hidden rounded-xl border border-white/5"
               >
-                <div className={`aspect-square bg-gradient-to-br ${game.gradient} flex flex-col items-center justify-center p-3`}>
-                  <span className="text-4xl drop-shadow-lg">{game.emoji}</span>
-                  <span className="mt-2 text-sm font-bold text-white drop-shadow-md text-center leading-tight">
+                <div className={`aspect-[4/5] bg-gradient-to-br ${game.gradient} flex flex-col items-center justify-center p-3`}>
+                  <span className="text-4xl drop-shadow-xl">{game.emoji}</span>
+                  <span className="mt-2 text-sm font-bold text-white drop-shadow-md">
                     {game.name}
                   </span>
                 </div>
@@ -160,29 +163,29 @@ export default function HomePage() {
 
         {/* Historial */}
         <section className="mb-4">
-          <div className="mb-3 flex items-center gap-2">
-            <h3 className="text-sm font-semibold text-zinc-400">Últimas jugadas</h3>
-          </div>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+            Últimas jugadas
+          </h3>
 
           {history.length === 0 ? (
-            <p className="rounded-xl border border-[#2a241c] bg-[#16120e] p-5 text-center text-sm text-zinc-500">
-              Todavía no jugaste. ¡Elegí un juego arriba!
+            <p className="rounded-xl border border-[#2a241c] bg-[#16120e]/80 p-4 text-center text-sm text-zinc-500">
+              Todavía no jugaste
             </p>
           ) : (
-            <div className="overflow-hidden rounded-xl border border-[#2a241c] bg-[#16120e]">
-              <div className="max-h-52 overflow-y-auto">
-                {history.slice(0, 12).map((h) => (
+            <div className="overflow-hidden rounded-xl border border-[#2a241c] bg-[#16120e]/80">
+              <div className="max-h-44 overflow-y-auto">
+                {history.slice(0, 10).map((h) => (
                   <div
                     key={h.id}
-                    className="flex items-center justify-between border-b border-[#2a241c]/60 px-4 py-2.5 text-sm last:border-0"
+                    className="flex items-center justify-between border-b border-[#2a241c]/50 px-3 py-2 text-sm last:border-0"
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
                       <span className="text-zinc-300">{gameName(h.game)}</span>
-                      <span className="text-xs text-zinc-500">
+                      <span className="text-[11px] text-zinc-600">
                         ${h.bet.toLocaleString("es-AR")}
                       </span>
                     </div>
-                    <span className={`font-medium ${h.result >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                    <span className={`font-medium text-sm ${h.result >= 0 ? "text-emerald-400" : "text-red-400"}`}>
                       {h.result >= 0 ? "+" : ""}${h.result.toLocaleString("es-AR")}
                     </span>
                   </div>
@@ -193,28 +196,28 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* Bottom Navigation */}
+      {/* Bottom Nav */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#2a241c] bg-[#0c0a08]/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-2">
-          <Link href="/" className="flex flex-col items-center gap-0.5 px-3 py-1 text-[#e8c547]">
-            <span className="text-xl">🏠</span>
-            <span className="text-[10px] font-medium">Inicio</span>
+        <div className="mx-auto flex max-w-lg items-center justify-around px-1 py-1.5">
+          <Link href="/" className="flex flex-col items-center gap-0.5 px-2.5 py-1 text-[#e8c547]">
+            <span className="text-lg">🏠</span>
+            <span className="text-[9px] font-medium">Inicio</span>
           </Link>
-          <Link href="/slots" className="flex flex-col items-center gap-0.5 px-3 py-1 text-zinc-500 hover:text-[#e8c547]">
-            <span className="text-xl">🎰</span>
-            <span className="text-[10px] font-medium">Slots</span>
+          <Link href="/crash" className="flex flex-col items-center gap-0.5 px-2.5 py-1 text-zinc-500">
+            <span className="text-lg">🚀</span>
+            <span className="text-[9px] font-medium">Crash</span>
           </Link>
-          <Link href="/crash" className="flex flex-col items-center gap-0.5 px-3 py-1 text-zinc-500 hover:text-[#e8c547]">
-            <span className="text-xl">🚀</span>
-            <span className="text-[10px] font-medium">Crash</span>
+          <Link href="/mines" className="flex flex-col items-center gap-0.5 px-2.5 py-1 text-zinc-500">
+            <span className="text-lg">💣</span>
+            <span className="text-[9px] font-medium">Mines</span>
           </Link>
-          <Link href="/mines" className="flex flex-col items-center gap-0.5 px-3 py-1 text-zinc-500 hover:text-[#e8c547]">
-            <span className="text-xl">💣</span>
-            <span className="text-[10px] font-medium">Mines</span>
+          <Link href="/plinko" className="flex flex-col items-center gap-0.5 px-2.5 py-1 text-zinc-500">
+            <span className="text-lg">🎱</span>
+            <span className="text-[9px] font-medium">Plinko</span>
           </Link>
-          <Link href="/ruleta" className="flex flex-col items-center gap-0.5 px-3 py-1 text-zinc-500 hover:text-[#e8c547]">
-            <span className="text-xl">🎡</span>
-            <span className="text-[10px] font-medium">Ruleta</span>
+          <Link href="/slots" className="flex flex-col items-center gap-0.5 px-2.5 py-1 text-zinc-500">
+            <span className="text-lg">🎰</span>
+            <span className="text-[9px] font-medium">Slots</span>
           </Link>
         </div>
       </nav>
