@@ -39,7 +39,7 @@ const MACHINES = [
   { id: "carnival", name: "Carnaval", emoji: "🎭", gradient: "from-yellow-400 to-red-700" },
 ];
 
-export default function SpotsLobby() {
+export default function SlotsLobby() {
   const { user, isLoading } = useCasino();
   const router = useRouter();
 
