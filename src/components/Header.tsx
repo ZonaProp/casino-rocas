@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useCasino } from "@/context/CasinoContext";
-// Using emoji icons to keep dependencies minimal
 
 export default function Header() {
   const { user, logout, addBalance } = useCasino();
@@ -10,40 +9,35 @@ export default function Header() {
   if (!user) return null;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#2a2a3a] bg-[#0a0a0f]/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-[#2a241c]/80 bg-[#0c0a08]/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold tracking-tight text-[#f5c542] text-glow">
-            Casino Rocas
+          <span className="text-xl font-bold tracking-tight text-[#e8c547] text-glow">
+            ♛ Casino Rocas
           </span>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 rounded-full border border-[#f5c542]/40 bg-[#14141f] px-4 py-1.5 glow-gold">
-            <span className="text-lg">🪙</span>
-            <span className="font-semibold text-[#f5c542]">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 rounded-full border border-[#e8c547]/40 bg-[#16120e] px-3 py-1.5">
+            <span className="text-sm">💰</span>
+            <span className="font-semibold text-[#e8c547] text-sm">
               ${user.balance.toLocaleString("es-AR")}
             </span>
           </div>
 
           <button
             onClick={() => addBalance(5000)}
-            className="hidden sm:inline-flex rounded-lg bg-[#2a9d8f] px-3 py-1.5 text-sm font-medium text-white transition hover:bg-[#21867a]"
+            className="rounded-lg bg-[#e8c547]/15 border border-[#e8c547]/30 px-2.5 py-1 text-xs font-medium text-[#e8c547] transition hover:bg-[#e8c547]/25"
           >
-            + $5.000
+            +$5k
           </button>
-
-          <div className="flex items-center gap-2 text-sm text-zinc-400">
-            <span>👤</span>
-            <span className="hidden sm:inline">{user.username}</span>
-          </div>
 
           <button
             onClick={logout}
-            className="rounded-lg p-2 text-zinc-400 transition hover:bg-zinc-800 hover:text-red-400"
-            title="Cerrar sesión"
+            className="rounded-lg p-1.5 text-zinc-500 transition hover:text-red-400"
+            title="Salir"
           >
-            🚪
+            ⏻
           </button>
         </div>
       </div>
