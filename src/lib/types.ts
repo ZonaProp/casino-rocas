@@ -7,11 +7,11 @@ export interface User {
 
 export interface HistoryEntry {
   id: string;
-  game: "slots" | "ruleta" | "blackjack";
+  game: "slots" | "ruleta" | "blackjack" | "crash" | "mines";
   bet: number;
   result: number; // positive = win, negative = loss
   details: string;
   timestamp: string;
 }
 
-export type GameType = "slots" | "ruleta" | "blackjack";
+export type GameType = "slots" | "ruleta" | "blackjack" | "crash" | "mines";
