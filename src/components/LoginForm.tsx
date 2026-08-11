@@ -26,9 +26,9 @@ export default function LoginForm() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label htmlFor="username" className="mb-1.5 block text-sm font-medium text-zinc-300">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="username" className="block text-sm font-medium text-zinc-300">
               Nombre de usuario
             </label>
             <input
@@ -46,7 +46,7 @@ export default function LoginForm() {
           <button
             type="submit"
             disabled={!username.trim()}
-            className="w-full rounded-xl bg-gradient-to-r from-[#f5c542] to-[#c9a227] py-3.5 font-bold text-black transition hover:brightness-110 disabled:opacity-40"
+            className="w-full rounded-xl bg-gradient-to-r from-[#f5c542] to-[#c9a227] py-3.5 font-bold text-black transition hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Entrar al Casino
           </button>
